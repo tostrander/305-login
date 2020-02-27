@@ -10,6 +10,42 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+//Start session
+session_start();
+
+//Initialize variables
+$err = false;
+$username = "";
+
+//If the form has been submitted
+if(!empty($_POST)) {
+
+    //Get username and password
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    //echo $username . ", " . $password;
+
+    //Dummy variables
+    $user = 'jshmo';
+    $pass = 'shmo123';
+
+
+    if ($username == $user && $password == $pass) {
+
+        //Store username in the session array
+        $_SESSION['un'] = $username;
+
+        //Redirect user to index.php
+        $page = isset($_SESSION['page']) ? $_SESSION['page'] : "index.php";
+        header("location: $page");
+    } else {
+
+        //Set error flag to true
+        $err = true;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -32,13 +68,20 @@ error_reporting(E_ALL);
     <form action="#" method="post">
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" >
+            <input type="text" class="form-control"
+                   id="username" name="username"
+                   value="<?php echo $username; ?>">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" >
         </div>
-        <span class="err">Incorrect login</span><br>
+
+        <?php
+        if ($err) {
+            echo '<span class="err">Incorrect login</span><br>';
+        }
+        ?>
 
         <button type="submit" class="btn btn-primary">Login</button>
     </form>

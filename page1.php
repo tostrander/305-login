@@ -6,12 +6,6 @@
  *  Description
  */
 
-/*
-echo "<pre>";
-var_dump($_SERVER);
-echo "</pre>";
-*/
-
 require('includes/check-login.php');
 
 ?>
@@ -30,8 +24,8 @@ require('includes/check-login.php');
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Super Secret</a>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="page1.php">Page 1</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li class="active"><a href="page1.php">Page 1</a></li>
                 <li><a href="page2.php">Page 2</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -40,8 +34,8 @@ require('includes/check-login.php');
         </div>
     </nav>
 
-    <h1>Admin Page</h1>
-    <p>This page contains super-sensitive data</p>
+    <h1>Page 1</h1>
+    <p>This is another page containing super-sensitive data</p>
 </div>
 
 <script src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>
